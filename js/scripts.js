@@ -1,5 +1,5 @@
-var replaceWord = function(userString, userMatch, userReplace) {
-  var regExpression = new RegExp(userFind, "ig");
+var replaceWord = function(userString, userMatch, userReplacement) {
+  var regExpression = new RegExp(userMatch, "ig");
   var resultString = userString.replace(regExpression, userReplacement);
   if (resultString === userString) {
     return "nada";
