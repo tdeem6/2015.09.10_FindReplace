@@ -1,22 +1,17 @@
 describe("replaceWord", function() {
-  it("returns word entered in the input field", function() {
-    expect(replaceWord("something", "replace")).to.equal("replace");
+  it("replaces userMatch with userReplacement if found in userString", function() {
+    expect(replaceWord("Hello world", "world", "John")).to.equal("Hello John");
   });
 
-  it("shows returned word if it finds a match in the given sentence", function() {
-    expect(replaceWord("something", "replace", "Something")).to.equal("found");
+  it("returns 'word has no match' if userMatch is not found in userString", function() {
+    expect(replaceWord("Hello World", "pizza", "pie")).to.equal('word has no match');
   });
 
-  it("will not show replacement word if not found in sentence", function() {
-    expect(replaceWord("something", "replace", "Something")).to.equal("doggy");
+  it("replaces all matches of userMatch if found in userString", function() {
+    expect(replaceWord("Hello world, the world is crazy", "world", "universe")).to.equal("Hello universe, the universe is crazy");
   });
 
-  it("replaces the word input by user if found in sentence with the replacement word", function() {
-    expect(replaceWord("This test is so hard", "hard", "easy")).to.equal("This test is so easy");
+  it("replaces all matches of userMatch in userString while being case insensitive", function() {
+    expect(replaceWord("This WorLd can be a better wORld", "world", "universe")).to.equal("This universe can be a better universe");
   });
-
-  it("tell user there is no matching word to replace", function() {
-    expect(replaceWord("This test is so hard", "Ralph", "Nader")).to.equal("Obama");
-  });
-
 });

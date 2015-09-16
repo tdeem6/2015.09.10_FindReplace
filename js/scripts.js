@@ -1,11 +1,12 @@
 var replaceWord = function(userString, userMatch, userReplacement) {
   var regExpression = new RegExp(userMatch, "ig");
   var resultString = userString.replace(regExpression, userReplacement);
-  if (resultString === userString) {
-    return "nada";
-  } else {
+  if (resultString !== userString) {
     return resultString;
+  } else {
+    return 'word has no match';
   }
+
 };
 
 $(document).ready(function() {
@@ -17,7 +18,7 @@ $(document).ready(function() {
     var userReplacement = $("input#user-replacement").val();
 
     var result = replaceWord(userString, userMatch, userReplacement);
-    if (result === "nada") {
+    if (result === "word has no match") {
       $(".no-replace").show();
     } else {
       $(".replaced").show().text(result);
